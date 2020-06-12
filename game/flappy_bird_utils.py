@@ -37,11 +37,7 @@ def load():
         'game/assets/sprites/base.png').convert_alpha()
 
     # sounds
-    if 'win' in sys.platform:
-        soundExt = '.wav'
-    else:
-        soundExt = '.ogg'
-
+    soundExt = '.wav' if 'win' in sys.platform else '.ogg'
     SOUNDS['die'] = pygame.mixer.Sound('game/assets/audio/die' + soundExt)
     SOUNDS['hit'] = pygame.mixer.Sound('game/assets/audio/hit' + soundExt)
     SOUNDS['point'] = pygame.mixer.Sound('game/assets/audio/point' + soundExt)

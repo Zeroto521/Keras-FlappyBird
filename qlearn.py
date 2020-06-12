@@ -174,7 +174,7 @@ def trainNetwork(model, args):
         # print info
         if t <= OBSERVE:
             state = "observe"
-        elif t > OBSERVE and t <= OBSERVE + EXPLORE:
+        elif t <= OBSERVE + EXPLORE:
             state = "explore"
         else:
             state = "train"

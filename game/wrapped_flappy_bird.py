@@ -70,11 +70,10 @@ class GameState:
 
         # input_actions[0] == 1: do nothing
         # input_actions[1] == 1: flap the bird
-        if input_actions[1] == 1:
-            if self.playery > -2 * PLAYER_HEIGHT:
-                self.playerVelY = self.playerFlapAcc
-                self.playerFlapped = True
-                # SOUNDS['wing'].play()
+        if input_actions[1] == 1 and self.playery > -2 * PLAYER_HEIGHT:
+            self.playerVelY = self.playerFlapAcc
+            self.playerFlapped = True
+            # SOUNDS['wing'].play()
 
         # check for score
         playerMidPos = self.playerx + PLAYER_WIDTH / 2
@@ -182,7 +181,6 @@ def showScore(score):
 
 def checkCrash(player, upperPipes, lowerPipes):
     """returns True if player collders with base or pipes."""
-    pi = player['index']
     player['w'] = IMAGES['player'][0].get_width()
     player['h'] = IMAGES['player'][0].get_height()
 
@@ -194,6 +192,7 @@ def checkCrash(player, upperPipes, lowerPipes):
         playerRect = pygame.Rect(player['x'], player['y'],
                                  player['w'], player['h'])
 
+        pi = player['index']
         for uPipe, lPipe in zip(upperPipes, lowerPipes):
             # upper and lower pipe rects
             uPipeRect = pygame.Rect(
